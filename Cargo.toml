@@ -9,6 +9,10 @@ readme = "README.md"
 keywords = ["cli"]
 categories = ["command-line-utilities"]
 
+[package.metadata.release]
+no-dev-version = true
+disable-publish = true # handled by GitHub Actions
+
 [dependencies]
 anyhow = "1.0"
 clap = "3.0.0-beta.2"
