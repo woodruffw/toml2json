@@ -244,7 +244,7 @@ dependencies = [
 
 [[package]]
 name = "toml2json"
-version = "1.0.0"
+version = "0.9.9"
 dependencies = [
  "anyhow",
  "clap",
