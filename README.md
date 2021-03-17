@@ -1,6 +1,8 @@
 toml2json
 =========
 
+[![Crates.io](https://img.shields.io/crates/v/toml2json)](https://crates.io/crates/toml2json)
+
 A command-line tool that converts TOML to JSON. Nothing more, nothing less.
 
 ## Installation
