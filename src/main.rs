@@ -1,10 +1,10 @@
 #![forbid(unsafe_code)]
 
-use anyhow::{Context, Result};
-use clap::{App, Arg};
-
 use std::fs;
 use std::io::{self, Read};
+
+use anyhow::{Context, Result};
+use clap::{App, Arg};
 
 fn app<'a>() -> App<'a> {
     App::new(env!("CARGO_PKG_NAME"))
