@@ -12,13 +12,13 @@ fn app<'a>() -> App<'a> {
         .about(env!("CARGO_PKG_DESCRIPTION"))
         .arg(
             Arg::new("pretty")
-                .about("pretty print the JSON")
+                .help("pretty print the JSON")
                 .short('p')
                 .long("pretty"),
         )
         .arg(
             Arg::new("input")
-                .about("the TOML to convert")
+                .help("the TOML to convert")
                 .index(1)
                 .default_value("-"),
         )
