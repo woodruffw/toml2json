@@ -11,8 +11,8 @@ keywords = ["cli", "toml", "json"]
 categories = ["command-line-utilities", "development-tools", "encoding"]
 
 [package.metadata.release]
-no-dev-version = true
-disable-publish = true # handled by GitHub Actions
+dev-version = false
+publish = true # handled by GitHub Actions
 
 [dependencies]
 anyhow = "1.0"
