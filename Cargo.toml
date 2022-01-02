@@ -12,7 +12,7 @@ categories = ["command-line-utilities", "development-tools", "encoding"]
 
 [package.metadata.release]
 dev-version = false
-publish = true # handled by GitHub Actions
+publish = false # handled by GitHub Actions
 
 [dependencies]
 anyhow = "1.0"
