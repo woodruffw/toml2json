@@ -4,10 +4,10 @@ use std::fs;
 use std::io::{self, Read};
 
 use anyhow::{Context, Result};
-use clap::{App, Arg};
+use clap::{Arg, Command};
 
-fn app<'a>() -> App<'a> {
-    App::new(env!("CARGO_PKG_NAME"))
+fn app<'a>() -> Command<'a> {
+    Command::new(env!("CARGO_PKG_NAME"))
         .version(env!("CARGO_PKG_VERSION"))
         .about(env!("CARGO_PKG_DESCRIPTION"))
         .arg(
