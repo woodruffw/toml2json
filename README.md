@@ -8,8 +8,16 @@ A command-line tool that converts TOML to JSON. Nothing more, nothing less.
 
 ## Installation
 
+### Cargo
+
 ```
 $ cargo install toml2json
+```
+
+### Nixpkgs
+
+```
+nix-env --install toml2json
 ```
 
 Please let us know if you package `toml2json` for another package manager or ecosystem!
