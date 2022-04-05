@@ -8,6 +8,8 @@ A command-line tool that converts TOML to JSON. Nothing more, nothing less.
 
 ## Installation
 
+### Cargo
+
 ```
 $ cargo install toml2json
 ```
