@@ -25,11 +25,11 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Toolchain
-      run: rustup install 1.59.0
+      run: rustup install 1.60.0
 
     - name: Build
       run: |
-        cargo +1.59.0 build
+        cargo +1.60.0 build
 
   build-stable:
     runs-on: ubuntu-latest
