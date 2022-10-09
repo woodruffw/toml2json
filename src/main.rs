@@ -4,9 +4,9 @@ use std::fs;
 use std::io::{self, Read};
 
 use anyhow::{Context, Result};
-use clap::{Arg, Command};
+use clap::{Arg, ArgAction, Command};
 
-fn app<'a>() -> Command<'a> {
+fn app() -> Command {
     Command::new(env!("CARGO_PKG_NAME"))
         .version(env!("CARGO_PKG_VERSION"))
         .about(env!("CARGO_PKG_DESCRIPTION"))
@@ -14,7 +14,8 @@ fn app<'a>() -> Command<'a> {
             Arg::new("pretty")
                 .help("pretty print the JSON")
                 .short('p')
-                .long("pretty"),
+                .long("pretty")
+                .action(ArgAction::SetTrue),
         )
         .arg(
             Arg::new("input")
@@ -30,8 +31,8 @@ fn main() -> Result<()> {
     // Get our input source (which can be - or a filename) and its
     // corresponding buffer. We don't bother streaming or chunking,
     // since the `toml` crate only supports slices and strings.
-    let input_src = matches.value_of("input").unwrap();
-    let input_buf = match input_src {
+    let input_src = matches.get_one::<String>("input").unwrap();
+    let input_buf = match input_src.as_ref() {
         "-" => {
             let mut input_buf = String::new();
             io::stdin()
@@ -50,7 +51,7 @@ fn main() -> Result<()> {
 
     // Spit back out, but as JSON. `serde_json` *does* support streaming, so
     // we do it.
-    if matches.is_present("pretty") {
+    if *matches.get_one::<bool>("pretty").unwrap() {
         serde_json::to_writer_pretty(io::stdout(), &value)
     } else {
         serde_json::to_writer(io::stdout(), &value)
