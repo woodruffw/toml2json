@@ -1,7 +1,7 @@
 toml2json
 =========
 
-[![Build Status](https://img.shields.io/github/workflow/status/woodruffw/toml2json/CI/main)](https://github.com/woodruffw/toml2json/actions?query=workflow%3ACI)
+[![CI](https://github.com/woodruffw/toml2json/actions/workflows/ci.yml/badge.svg)](https://github.com/woodruffw/toml2json/actions/workflows/ci.yml)
 [![Crates.io](https://img.shields.io/crates/v/toml2json)](https://crates.io/crates/toml2json)
 
 A command-line tool that converts TOML to JSON. Nothing more, nothing less.
