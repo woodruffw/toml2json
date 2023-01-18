@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Toolchain
-      run: rustup install 1.60.0
+      run: rustup install 1.64.0
 
     - name: Build
       run: |
