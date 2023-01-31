@@ -41,13 +41,13 @@ fn main() -> Result<()> {
             input_buf
         }
         input => fs::read_to_string(input)
-            .with_context(|| format!("failed to collect from input: {}", input))?,
+            .with_context(|| format!("failed to collect from input: {input}"))?,
     };
 
     // Turn our collected input into a value. We can't be more specific than
     // value, since we're doing arbitrary valid TOML conversions.
     let value = toml::from_str::<toml::Value>(&input_buf)
-        .with_context(|| format!("parsing TOML from {} failed", input_src))?;
+        .with_context(|| format!("parsing TOML from {input_src} failed"))?;
 
     // Spit back out, but as JSON. `serde_json` *does* support streaming, so
     // we do it.
