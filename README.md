@@ -22,6 +22,14 @@ $ cargo install toml2json
 apk add toml2json
 ```
 
+### Arch Linux
+
+If you're using Arch Linux, you can install `toml2json` using an [AUR helper](https://wiki.archlinux.org/title/AUR_helpers). For example:
+
+```bash
+paru -S toml2json
+```
+
 ### Nixpkgs
 
 ```
