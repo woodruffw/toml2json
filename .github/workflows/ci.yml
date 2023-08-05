@@ -10,7 +10,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Format
         run: cargo fmt && git diff --exit-code
       - name: Lint
@@ -22,7 +22,7 @@ jobs:
   build-msrv:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Toolchain
       run: rustup install 1.64.0
@@ -34,7 +34,7 @@ jobs:
   build-stable:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Toolchain
       run: rustup update
