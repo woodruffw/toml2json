@@ -14,6 +14,14 @@ A command-line tool that converts TOML to JSON. Nothing more, nothing less.
 $ cargo install toml2json
 ```
 
+### Alpine Linux
+
+`toml2json` is available for [Alpine Edge](https://pkgs.alpinelinux.org/packages?name=toml2json&branch=edge). It can be installed via [apk](https://wiki.alpinelinux.org/wiki/Alpine_Package_Keeper) after enabling the [testing repository](https://wiki.alpinelinux.org/wiki/Repositories).
+
+```bash
+apk add toml2json
+```
+
 ### Arch Linux
 
 If you're using Arch Linux, you can install `toml2json` using an [AUR helper](https://wiki.archlinux.org/title/AUR_helpers). For example:
