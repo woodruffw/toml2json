@@ -9,7 +9,7 @@ homepage = "https://github.com/woodruffw/toml2json"
 readme = "README.md"
 keywords = ["cli", "toml", "json"]
 categories = ["command-line-utilities", "development-tools", "encoding"]
-rust-version = "1.64"
+rust-version = "1.66"
 
 [package.metadata.release]
 publish = false # handled by GitHub Actions
@@ -20,4 +20,4 @@ anyhow = "1.0"
 clap = "4.3"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-toml = "0.7"
+toml = "0.8"
