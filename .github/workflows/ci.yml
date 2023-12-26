@@ -19,18 +19,6 @@ jobs:
           rustup component add clippy
           cargo clippy -- -D warnings
 
-  build-msrv:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Toolchain
-      run: rustup install 1.66.0
-
-    - name: Build
-      run: |
-        cargo +1.66.0 build
-
   build-stable:
     runs-on: ubuntu-latest
     steps:
