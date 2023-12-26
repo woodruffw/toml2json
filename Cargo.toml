@@ -9,7 +9,6 @@ homepage = "https://github.com/woodruffw/toml2json"
 readme = "README.md"
 keywords = ["cli", "toml", "json"]
 categories = ["command-line-utilities", "development-tools", "encoding"]
-rust-version = "1.66"
 
 [package.metadata.release]
 publish = false # handled by GitHub Actions
