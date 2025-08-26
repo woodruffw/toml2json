@@ -6,11 +6,15 @@ on:
       - main
   pull_request:
 
+permissions: {}
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
       - name: Format
         run: cargo fmt && git diff --exit-code
       - name: Lint
@@ -22,10 +26,12 @@ jobs:
   build-stable:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
 
-    - name: Toolchain
-      run: rustup update
+      - name: Toolchain
+        run: rustup update
 
-    - name: Build
-      run: cargo build
+      - name: Build
+        run: cargo build
