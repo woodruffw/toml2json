@@ -10,10 +10,6 @@ readme = "README.md"
 keywords = ["cli", "toml", "json"]
 categories = ["command-line-utilities", "development-tools", "encoding"]
 
-[package.metadata.release]
-publish = false # handled by GitHub Actions
-push = true
-
 [dependencies]
 anyhow = "1.0"
 clap = "4.5"
