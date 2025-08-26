@@ -8,11 +8,10 @@ name: release
 permissions: {}
 
 jobs:
-  release:
+  crates:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      id-token: write
+      id-token: write # for trusted publishing
 
     environment:
       name: crates.io
