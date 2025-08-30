@@ -10,8 +10,24 @@ A command-line tool that converts TOML to JSON. Nothing more, nothing less.
 
 ### Cargo
 
+```bash
+cargo install toml2json
 ```
-$ cargo install toml2json
+
+### PyPI
+
+**NOTE**: [toml2json on PyPI](https://pypi.org/project/toml2json/)
+was originally a pure Python CLI; ownership of the name on PyPI
+was transferred to [woodruffw](https://pypi.org/user/woodruffw/)
+for this Rust-based CLI in August 2025. Versions prior to 0.1.0 on PyPI
+are the old pure Python version.
+
+```bash
+uvx toml2json
+uv tool install toml2json
+pipx install toml2json
+
+# or pip install, if you're in a virtual environment
 ```
 
 ### Homebrew
