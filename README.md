@@ -3,6 +3,7 @@ toml2json
 
 [![CI](https://github.com/woodruffw/toml2json/actions/workflows/ci.yml/badge.svg)](https://github.com/woodruffw/toml2json/actions/workflows/ci.yml)
 [![Crates.io](https://img.shields.io/crates/v/toml2json)](https://crates.io/crates/toml2json)
+![PyPI - Version](https://img.shields.io/pypi/v/toml2json)
 
 A command-line tool that converts TOML to JSON. Nothing more, nothing less.
 
