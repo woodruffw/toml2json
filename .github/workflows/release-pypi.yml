@@ -157,7 +157,7 @@ jobs:
     environment:
       name: pypi
       url: https://pypi.org/p/toml2json/
-    if: ${{ github.event_name == 'published' }}
+    if: ${{ github.event_name == 'release' }}
     needs: [linux, musllinux, windows, macos, sdist]
     permissions:
       # Use to sign the release artifacts
@@ -173,7 +173,7 @@ jobs:
         with:
           subject-path: "wheels-*/*"
       - name: Publish to PyPI
-        if: ${{ github.event_name == 'published' }}
+        if: ${{ github.event_name == 'release' }}
         uses: PyO3/maturin-action@86b9d133d34bc1b40018696f782949dac11bd380 # v1.49.4
         with:
           command: upload
