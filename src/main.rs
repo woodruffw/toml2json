@@ -4,34 +4,30 @@ use std::fs;
 use std::io::{self, Read};
 
 use anyhow::{Context, Result};
-use clap::{Arg, ArgAction, Command};
+use clap::Parser;
 
-fn app() -> Command {
-    Command::new(env!("CARGO_PKG_NAME"))
-        .version(env!("CARGO_PKG_VERSION"))
-        .about(env!("CARGO_PKG_DESCRIPTION"))
-        .arg(
-            Arg::new("pretty")
-                .help("pretty print the JSON")
-                .short('p')
-                .long("pretty")
-                .action(ArgAction::SetTrue),
-        )
-        .arg(
-            Arg::new("input")
-                .help("the TOML to convert")
-                .index(1)
-                .default_value("-"),
-        )
+/// Convert TOML to JSON
+#[derive(Parser)]
+#[command(name = env!("CARGO_PKG_NAME"))]
+#[command(version = env!("CARGO_PKG_VERSION"))]
+#[command(about = env!("CARGO_PKG_DESCRIPTION"))]
+struct Args {
+    /// pretty print the JSON
+    #[arg(short, long)]
+    pretty: bool,
+
+    /// the TOML to convert
+    #[arg(default_value = "-")]
+    input: String,
 }
 
 fn main() -> Result<()> {
-    let matches = app().get_matches();
+    let args = Args::parse();
 
     // Get our input source (which can be - or a filename) and its
     // corresponding buffer. We don't bother streaming or chunking,
     // since the `toml` crate only supports slices and strings.
-    let input_src = matches.get_one::<String>("input").unwrap();
+    let input_src = &args.input;
     let input_buf = match input_src.as_ref() {
         "-" => {
             let mut input_buf = String::new();
@@ -51,7 +47,7 @@ fn main() -> Result<()> {
 
     // Spit back out, but as JSON. `serde_json` *does* support streaming, so
     // we do it.
-    if *matches.get_one::<bool>("pretty").unwrap() {
+    if args.pretty {
         serde_json::to_writer_pretty(io::stdout(), &value)
     } else {
         serde_json::to_writer(io::stdout(), &value)
@@ -66,7 +62,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_app() {
-        app().debug_assert();
+    fn test_args() {
+        use clap::CommandFactory;
+        Args::command().debug_assert();
     }
 }
