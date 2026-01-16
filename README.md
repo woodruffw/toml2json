@@ -55,6 +55,14 @@ If you're using Arch Linux, you can install `toml2json` using an [AUR helper](ht
 paru -S toml2json
 ```
 
+### Debian/Ubuntu
+
+`toml2json` is available since Debian 13 Trixie and Ubuntu 25.04, packaged as `rust-toml2json`.
+
+```bash
+apt install rust-toml2json
+```
+
 ### Nixpkgs
 
 ```
