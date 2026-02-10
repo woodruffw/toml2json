@@ -42,7 +42,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Build wheels
-        uses: PyO3/maturin-action@86b9d133d34bc1b40018696f782949dac11bd380 # v1.49.4
+        uses: PyO3/maturin-action@b1bd829e37fef14c63f19162034228a2f3dc1021 # v1.50.0
         with:
           target: ${{ matrix.platform.target }}
           args: --release --out dist
@@ -72,7 +72,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Build wheels
-        uses: PyO3/maturin-action@86b9d133d34bc1b40018696f782949dac11bd380 # v1.49.4
+        uses: PyO3/maturin-action@b1bd829e37fef14c63f19162034228a2f3dc1021 # v1.50.0
         with:
           target: ${{ matrix.platform.target }}
           args: --release --out dist
@@ -98,7 +98,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Build wheels
-        uses: PyO3/maturin-action@86b9d133d34bc1b40018696f782949dac11bd380 # v1.49.4
+        uses: PyO3/maturin-action@b1bd829e37fef14c63f19162034228a2f3dc1021 # v1.50.0
         with:
           target: ${{ matrix.platform.target }}
           args: --release --out dist
@@ -123,7 +123,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Build wheels
-        uses: PyO3/maturin-action@86b9d133d34bc1b40018696f782949dac11bd380 # v1.49.4
+        uses: PyO3/maturin-action@b1bd829e37fef14c63f19162034228a2f3dc1021 # v1.50.0
         with:
           target: ${{ matrix.platform.target }}
           args: --release --out dist
@@ -141,7 +141,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Build sdist
-        uses: PyO3/maturin-action@86b9d133d34bc1b40018696f782949dac11bd380 # v1.49.4
+        uses: PyO3/maturin-action@b1bd829e37fef14c63f19162034228a2f3dc1021 # v1.50.0
         with:
           command: sdist
           args: --out dist
@@ -167,14 +167,11 @@ jobs:
       # Used to generate artifact attestation
       attestations: write
     steps:
+      - uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
       - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
-      - name: Generate artifact attestation
-        uses: actions/attest-build-provenance@96278af6caaf10aea03fd8d33a09a777ca52d62f # v3.2.0
+      - uses: astral-sh/attest-action@2c727738cea36d6c97dd85eb133ea0e0e8fe754b # v0.0.4
         with:
-          subject-path: "wheels-*/*"
+          paths: wheels-*/*
       - name: Publish to PyPI
-        if: ${{ github.event_name == 'release' }}
-        uses: PyO3/maturin-action@86b9d133d34bc1b40018696f782949dac11bd380 # v1.49.4
-        with:
-          command: upload
-          args: --non-interactive --skip-existing wheels-*/*
+        run: |
+          uv publish --trusted-publishing=always wheels-*/*
