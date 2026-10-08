@@ -7,6 +7,9 @@ toml2json
 
 A command-line tool that converts TOML to JSON. Nothing more, nothing less.
 
+Key order is preserved: the JSON comes out in the order the TOML file writes,
+at every level.
+
 ## Installation
 
 ### Cargo
