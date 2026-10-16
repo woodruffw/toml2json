@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
 use std::fs;
-use std::io::{self, Read};
+use std::io::{self, Read, Write};
 
 use anyhow::{Context, Result};
 use clap::Parser;
@@ -47,12 +47,14 @@ fn main() -> Result<()> {
 
     // Spit back out, but as JSON. `serde_json` *does* support streaming, so
     // we do it.
+    let mut stdout = io::stdout().lock();
     if args.pretty {
-        serde_json::to_writer_pretty(io::stdout(), &value)
+        serde_json::to_writer_pretty(&mut stdout, &value)
     } else {
-        serde_json::to_writer(io::stdout(), &value)
+        serde_json::to_writer(&mut stdout, &value)
     }
     .with_context(|| "JSON serialization and/or stdout streaming failed")?;
+    writeln!(stdout).with_context(|| "writing final newline to stdout failed")?;
 
     Ok(())
 }
