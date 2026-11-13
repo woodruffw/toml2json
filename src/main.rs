@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
 use std::fs;
-use std::io::{self, Read};
+use std::io::{self, Read, Write};
 
 use anyhow::{Context, Result};
 use clap::Parser;
@@ -53,6 +53,10 @@ fn main() -> Result<()> {
         serde_json::to_writer(io::stdout(), &value)
     }
     .with_context(|| "JSON serialization and/or stdout streaming failed")?;
+
+    io::stdout()
+        .write_all(b"\n")
+        .with_context(|| "writing final newline to stdout failed")?;
 
     Ok(())
 }
